@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.module.scss';
+import { ContentPage } from './components/ContentPage/ContentPage';
+import { LogInPage } from './components/LogInPage/LogInPage';
+import s from './App.module.scss';
+import {useState} from 'react'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+	const [closeLoginPage, setCloseLoginPage] = useState(true);
+	const [name, setName] = useState('');
+	const handlerChange = (name) => {
+		setName(name)
+	}
+
+	return (
+		<div className={s.App}>
+			{closeLoginPage ? (
+			<LogInPage onChange={handlerChange} setCloseLoginPage={setCloseLoginPage} />
+			) : (<ContentPage name={name} />)}
+		</div>
+	);
 }
 
 export default App;
