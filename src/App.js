@@ -6,7 +6,9 @@ import {useState} from 'react'
 
 function App() {
 
-	const [closeLoginPage, setCloseLoginPage] = useState(true);
+	const [closeLoginPage, setCloseLoginPage] = useState(false
+		/* localStorage.getItem('isLoggedIn') */
+	);
 	const [name, setName] = useState('');
 	const handlerChange = (name) => {
 		setName(name)
@@ -15,8 +17,8 @@ function App() {
 	return (
 		<div className={s.App}>
 			{closeLoginPage ? (
-			<LogInPage onChange={handlerChange} setCloseLoginPage={setCloseLoginPage} />
-			) : (<ContentPage name={name} />)}
+			(<ContentPage setCloseLoginPage={setCloseLoginPage} name={name} />)
+			) : <LogInPage onChange={handlerChange} setCloseLoginPage={setCloseLoginPage} />}
 		</div>
 	);
 }

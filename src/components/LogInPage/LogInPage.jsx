@@ -1,30 +1,45 @@
 import React from 'react'
 import './LogInPage.module.scss'
 import s from './LogInPage.module.scss'
+import { useRef } from 'react'
 
-export const LogInPage = ({ onChange, setCloseLoginPage},) => {
-	
+export const LogInPage = ({ onChange, setCloseLoginPage },) => {
+
+	const loginRef = useRef();
+	const passwordRef = useRef();
+
 	const handlerChange = (event) => {
 		onChange(event.target.value)
 	}
 
-/* 	const handleSubmit = (event) => {
+	const handleSubmit = (event) => {
+
+		const userData = {
+			login: loginRef.current.value,
+			password: passwordRef.current.value,
+		}
+
+		console.log(userData);
+
+		setCloseLoginPage(true)
 		event.preventDefault();
-	} */
+
+	/* 	localStorage.setItem('isLoggedIn', true) */
+	}
 
 	return (
 		<div className={s.LogInPageContainer}>
-			<form /* onSubmit={handleSubmit} */ className={s.LogInForm}>
+			<form onSubmit={handleSubmit} className={s.LogInForm}>
 				<h1>Вход</h1>
 				<div >
-					<input required  type="text" name='InputLogin' onChange={handlerChange}/>
+					<input ref={loginRef} required type="text" name='InputLogin' onChange={handlerChange} />
 				</div>
 				<div>
-					<input required type="password" name='InputPassword' />
+					<input ref={passwordRef} required type="password" name='InputPassword' />
 				</div>
 				<div >
-					<button onClick={() => setCloseLoginPage(false)} type='button'>Войти</button>
-				</div> 
+					<button type='submit'>Войти</button>
+				</div>
 			</form>
 		</div>
 	)

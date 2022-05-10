@@ -1,13 +1,13 @@
 import React from 'react'
 import './ContentPageMain.module.scss'
 import { MainContent } from './MainContent/MainContent'
-import { MainSidebar } from './MainSidebar/MainSidebar'
+import { MainTopBar } from './MainTopBar/MainTopBar'
 import s from './ContentPageMain.module.scss'
-export const ContentPageMain = () => {
+export const ContentPageMain = ({setCloseLoginPage}) => {
 	return (
 		<div className={s.ContentPageMain}>
-			<MainSidebar />
-			<MainContent />
+			<MainTopBar />
+			<MainContent setCloseLoginPage={setCloseLoginPage}/>
 		</div>
 	)
 }

@@ -1,5 +1,7 @@
 .MainSidebar {
-	flex: 0 1 20%;
+	flex: 0 1 10%;
 	padding: 10px 10px;
 	background-color: rgba(255, 128, 0, 0.808);
+	display: flex;
+	justify-content: space-between;
 }

@@ -6,7 +6,7 @@ import { ContentPageHeader } from './ContentPageHeader/ContentPageHeader'
 import { ContentPageMain } from './ContentPageMain/ContentPageMain'
 import { useState } from "react";
 
-export const ContentPage = ({ name }) => {
+export const ContentPage = ({ name, setCloseLoginPage }) => {
 	
 	const [showHeader, closeHeader] = useState(true);
 
@@ -20,7 +20,7 @@ export const ContentPage = ({ name }) => {
 				</>
 			) : (
 				<>
-					<ContentPageMain />
+					<ContentPageMain setCloseLoginPage={setCloseLoginPage}/>
 					<ContentPageFooter />
 				</>
 			)
