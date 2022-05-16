@@ -1,7 +1,8 @@
-.MainSidebar {
-	flex: 0 1 10%;
-	padding: 10px 10px;
-	background-color: rgba(255, 128, 0, 0.808);
+.MainTopBar {
+	flex: 0 1 auto;
+	padding: 5px 0px;
+	color: rgb(255, 255, 255);
 	display: flex;
 	justify-content: space-between;
+	max-height: 75px;
 }

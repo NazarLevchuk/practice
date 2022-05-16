@@ -1,5 +1,7 @@
 .MainContent {
-	flex: 0 1 90%;
-	padding: 10px 10px;
-	background-color: rgba(168, 102, 36, 0.808);
+	flex: 1 1 auto;
+
+	display: flex;
+	flex-direction: column;
+	
 }
