@@ -8,7 +8,7 @@ import { useState } from "react";
 import bgCoffe from '../../img/jpg/bg_coffe.jpg'
 
 
-export const ContentPage = ({ name }) => {
+export const ContentPage = ({ name, state }) => {
 
 	const [showHeader, closeHeader] = useState(true);
 
@@ -18,13 +18,13 @@ export const ContentPage = ({ name }) => {
 				<>
 					<img className={s.bg_img} src={bgCoffe} alt="" />
 					<ContentPageHeader name={name} closeHeader={closeHeader} />
-					<ContentPageMain />
+					<ContentPageMain state={state} />
 					<ContentPageFooter />
 				</>
 			) : (
 				<>
 				<img className={s.bg_img} src={bgCoffe} alt="" />
-					<ContentPageMain />
+					<ContentPageMain state={state}/>
 					<ContentPageFooter />
 				</>
 			)

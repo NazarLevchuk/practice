@@ -4,7 +4,7 @@ import s from './LogInPage.module.scss'
 import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-export const LogInPage = ({ onChange, setCloseLoginPage }) => {
+export const LogInPage = ({ onChange, userData }) => {
 
 	let navigate = useNavigate();
 
@@ -17,20 +17,14 @@ export const LogInPage = ({ onChange, setCloseLoginPage }) => {
 
 	const handleSubmit = (event) => {
 
-		const userData = {
-			login: loginRef.current.value,
-			password: passwordRef.current.value,
-		};
+		let login = loginRef.current.value;
+		let password = passwordRef.current.value;
+		userData(login, password);
+		/* console.log(login, password) */
 
 		navigate("/contentpage");
 
-
-		console.log(userData);
-
-/* 		setCloseLoginPage(true) */
 		event.preventDefault();
-
-	/* 	localStorage.setItem('isLoggedIn', true) */
 	}
 
 	return (

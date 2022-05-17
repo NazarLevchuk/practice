@@ -4,12 +4,12 @@ import s from './MainContent.module.scss'
 import { MainContentFeatured } from './MainContentFeatured/MainContentFeatured'
 import { MainContentTitle } from './MainContentTitle/MainContentTitle'
 
-export const MainContent = () => {
-
+export const MainContent = ({state}) => {
+	
 	return (
 		<div className={s.MainContent}>
 			<MainContentTitle />
-			<MainContentFeatured />
+			<MainContentFeatured state={state}/>
 		</div>
 	)
 }
