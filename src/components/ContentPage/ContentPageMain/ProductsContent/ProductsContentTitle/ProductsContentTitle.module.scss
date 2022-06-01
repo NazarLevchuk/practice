@@ -1,0 +1,28 @@
+.ProductsContentTitle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 5vw;
+	font-size: 30px;
+	min-width: calc(100vw - 17px);
+	align-self: center;
+	background-color: rgb(251, 253, 253);
+	min-height: 75px;
+}
+
+.ProductsContentTitleTextBody {
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	height: 100%;
+
+	width: 100%;
+	max-width: 1200px;
+	padding: 0px 2vw;
+}
+
+.ProductsContentTitleText{
+	& span {
+		margin: 0px 3px 0px 5px;
+	}
+}

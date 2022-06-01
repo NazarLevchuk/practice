@@ -4,31 +4,20 @@ import s from './ContentPage.module.scss'
 import { ContentPageFooter } from './ContentPageFooter/ContentPageFooter'
 import { ContentPageHeader } from './ContentPageHeader/ContentPageHeader'
 import { ContentPageMain } from './ContentPageMain/ContentPageMain'
-import { useState } from "react";
-import bgCoffe from '../../img/jpg/bg_coffe.jpg'
 
 
-export const ContentPage = ({ name, state }) => {
+import { TopBar } from './TopBar/TopBar';
 
-	const [showHeader, closeHeader] = useState(true);
+export const ContentPage = ({ store, setIsLoggedIn }) => {
+
 
 	return (
-		<div className={s.ContentPageContainer}>
-			{showHeader ? (
-				<>
-					<img className={s.bg_img} src={bgCoffe} alt="" />
-					<ContentPageHeader name={name} closeHeader={closeHeader} />
-					<ContentPageMain state={state} />
-					<ContentPageFooter />
-				</>
-			) : (
-				<>
-				<img className={s.bg_img} src={bgCoffe} alt="" />
-					<ContentPageMain state={state}/>
-					<ContentPageFooter />
-				</>
-			)
-			}
+		<div className={s.ContentPage_container}>
+
+			<ContentPageHeader />
+			<TopBar setIsLoggedIn={setIsLoggedIn} dispatch={store.dispatch} />
+			<ContentPageMain store={store} />
+			<ContentPageFooter />
 		</div>
 	)
 }

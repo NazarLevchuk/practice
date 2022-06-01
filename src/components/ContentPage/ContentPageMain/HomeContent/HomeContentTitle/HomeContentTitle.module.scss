@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+.HomeContentTitle {
+	height: 60%;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	color: white;
+	flex-direction: column;
+	h1 {
+		font-family: 'Dancing Script', cursive;
+		font-weight: 700;
+		font-size: 70px;
+	}
+	h2 {
+		margin: 0.8vw 0px 0px 0px;
+		font-size: 35px;
+	}
+	button {
+		margin: 0.8vw 0px 0px 0px;
+		border: 2px solid rgb(255, 255, 255);
+		border-radius: 4px;
+		padding: 2px 8px;
+		font-size: 18px;
+		transition: all 0.3s ease 0s;
+		&:hover {
+			background-color: #fff;
+			color: #000;
+		}
+	}
+}

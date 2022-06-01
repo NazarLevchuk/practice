@@ -3,24 +3,27 @@ import { ContentPage } from './components/ContentPage/ContentPage';
 import { LogInPage } from './components/LogInPage/LogInPage';
 import s from './App.module.scss'
 import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import { state } from './state/state'
-import { userData } from './state/state'
-function App() {
 
-	const [name, setName] = useState('');
-	const handlerChange = (name) => {
-		setName(name)
+function App({store}) {
+
+
+
+	const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('login'))
+	
+
+		return (
+			<div className={s.wrapper_App}>
+				{isLoggedIn ? (
+					<>
+						<ContentPage setIsLoggedIn={setIsLoggedIn} store={store} />
+					</>) : (
+					<>
+						<LogInPage store={store} state={store.getState.bind(store)} dispatch={store.dispatch.bind(store)} setIsLoggedIn={setIsLoggedIn} />
+					</>)
+				}
+			</div>
+		);
 	}
 
-	return (
-		<div className={s.wrapper_App}>
-			<Routes>
-				<Route path='/contentpage' element={<ContentPage state={state} name={name} />} />
-				<Route path='/' element={<LogInPage userData={userData} onChange={handlerChange} />} />
-			</Routes>
-		</div>
-	);
-}
 
 export default App;
