@@ -1,14 +1,12 @@
 import React from 'react'
 
 import s from './ProductsContentItems.module.scss'
-export const ProductsContentItems = ({ carList }) => {
+export const ProductsContentItems = ({ ItemElements }) => {
 
 
-debugger
 	return (
 		<div className={s.ProductsContentItems}>
-			
-			{carList}
+			{ItemElements}
 		</div>
 	)
 }

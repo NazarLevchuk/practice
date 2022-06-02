@@ -20,7 +20,6 @@ export let store = {
 		inputNameValue: '',
 		inputEmailValue: '',
 		inputPasswordValue: '',
-		inputSearchValue: '',
 	},
 	isMobile : {
 		Android: function() {
@@ -88,7 +87,6 @@ export let store = {
 			this._state.inputNameValue = action.nameText;
 			this._state.inputEmailValue = action.emailText;
 			this._state.inputPasswordValue = action.passwordText;
-			this._state.inputSearchValue = action.searchText;
 			this.rerenderTree()
 
 		} else if (action.type === 'USER-DATA-STORAGE') {
