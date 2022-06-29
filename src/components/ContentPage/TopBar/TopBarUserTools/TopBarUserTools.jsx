@@ -7,7 +7,7 @@ export const TopBarUserTools = ({color, dispatch, setIsLoggedIn}) => {
 	return (
 		<div className={s.TopBarUserTools}>
 			<TopBarLogOut setIsLoggedIn={setIsLoggedIn} dispatch={dispatch} color={color} />
-			<TopBarCart color={color}/>
+			<TopBarCart dispatch={dispatch} color={color}/>
 		</div>
 	)
 }

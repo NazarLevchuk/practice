@@ -1,0 +1,41 @@
+.CartItem {
+	color: black;
+	cursor: pointer;
+	display: flex;
+	margin: 0px 0px 40px 0px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+.ItemTools{
+	display: flex;
+	flex-direction: column;
+	margin: 0px 0px 0px 2vw;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+.ItemDescriprion {
+	margin: 0px 0px 5px 0px;
+}
+.ItemPrice {
+	font-size: 15px;
+}
+.ItemToolsButton {
+	font-size: 17px;
+}
+.ItemImg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	object-fit: cover;
+	transition: transform 1.5s ease 0s;
+	border-radius: 10px;
+}
+.ItemImgContainer{
+	position: relative;
+	width: 25%;
+	height: 4vw;
+	
+}

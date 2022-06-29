@@ -15,8 +15,8 @@ export const ContentPage = ({ store, setIsLoggedIn }) => {
 		<div className={s.ContentPage_container}>
 
 			<ContentPageHeader />
-			<TopBar setIsLoggedIn={setIsLoggedIn} dispatch={store.dispatch} />
-			<ContentPageMain store={store} />
+			<TopBar setIsLoggedIn={setIsLoggedIn} dispatch={store.dispatch.bind(store)} />
+			<ContentPageMain />
 			<ContentPageFooter />
 		</div>
 	)

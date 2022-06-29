@@ -1,0 +1,41 @@
+.ProductsContentSidebar{
+	padding: 0px 10px;
+	display: flex;
+	flex-direction: column;
+	width: 10vw;
+}
+
+.SidebarSearchArea {
+	padding: 10px 10px;
+	background-color: rgb(251, 253, 253);
+	font-size: 17px;
+	cursor: pointer;
+}
+
+.SidebarCompanyListContainer{
+	padding: 5px 0px;
+	font-size: 17px;
+	font-weight: 700;
+	line-height: 20px;
+	
+}
+.SidebarCompanyList > li{
+	padding: 5px 10px;
+	font-weight: normal;
+	font-size: 14px;
+	cursor: pointer;
+}
+.SidebarPriceFilter{
+	padding: 5px 0px;
+	font-size: 17px;
+	font-weight: 700;
+}
+
+
+.SidebarPriceFilterRange {
+	display: flex;
+	flex-direction: column;
+	& input {
+		margin: 15px 0px;
+	}
+}

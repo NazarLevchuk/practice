@@ -1,104 +1,69 @@
-import img0 from '../img/jpg/Items_img/sofa1.jpg'
-export let store = {
-	
-	_state: {
-		userData: [
-			{ name: '' },
-		],
-		ItemData: [
-			{'descriprion':'Hi-Back Seat',prise:'40$', img: img0},
-			{'descriprion':'Hi-Back Sofa',prise:'30$', img: img0},
-			{'descriprion':'Hi-Back Bed',prise:'70$', img: img0},
-			{'descriprion':'Hi-Back Bed',prise:'70$', img: img0},
-			{'descriprion':'Hi-Back Bed',prise:'70$', img: img0},
-			{'descriprion':'Hi-Back Bed',prise:'70$', img: img0},
-			{'descriprion':'Hi-Back Bed',prise:'70$', img: img0},
-			{'descriprion':'Hi-Back Bed',prise:'70$', img: img0},
-			{'descriprion':'Hi-Back Bed',prise:'70$', img: img0},
-		
-		],
-		inputNameValue: '',
-		inputEmailValue: '',
-		inputPasswordValue: '',
-	},
-	isMobile : {
-		Android: function() {
-				return navigator.userAgent.match(/Android/i);
-		},
-		BlackBerry: function() {
-				return navigator.userAgent.match(/BlackBerry/i);
-		},
-		iOS: function() {
-				return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-		},
-		Opera: function() {
-				return navigator.userAgent.match(/Opera Mini/i);
-		},
-		Windows: function() {
-				return navigator.userAgent.match(/IEMobile/i);
-		},
-		any: function() {
-				return (this.Android() || this.BlackBerry() || this.iOS() || this.Opera() || this.Windows());
-		}
-},
+/* 
+import loggInReducer from './loggInReducer';
+import productsReduser from './productsReduser';
+import topBarReducer from './topBarReducer';
 
+export let store = {
+	_state: {
+		logginPage:
+		{
+			inputNameValue: '',
+			inputEmailValue: '',
+			inputPasswordValue: '',
+			logginData: [
+				{ name: '' },
+			]
+		},
+		productsPage: {
+			productsData: [
+				{ 'descriprion': 'Hi-Back Seat', 'price': '42', 'company': 'Marcos', img: img0 },
+				{ 'descriprion': 'Hi-Back Sofa', 'price': '32', 'company': 'Caressa', img: img0 },
+				{ 'descriprion': 'Hi-Back Bed', 'price': '72', 'company': 'Caressa', img: img0 },
+				{ 'descriprion': 'Hi-Back Bed', 'price': '76', 'company': 'Ikea', img: img0 },
+				{ 'descriprion': 'Hi-Back Bed', 'price': '73', 'company': 'Marcos', img: img0 },
+				{ 'descriprion': 'Hi-Back Beds', 'price': '11', 'company': 'Ikea', img: img0 },
+				{ 'descriprion': 'Hi-Back Bed', 'price': '15', 'company': 'Liddy', img: img0 },
+				{ 'descriprion': 'Hi-Back Bed', 'price': '70', 'company': 'Liddy', img: img0 },
+				{ 'descriprion': 'Hi-Back Bed', 'price': '21', 'company': 'Ikea', img: img0 },
+				{ 'descriprion': 'Hi-Back Bed', 'price': '76', 'company': 'Ikea', img: img0 },
+				{ 'descriprion': 'Hi-Back Bed', 'price': '73', 'company': 'Marcos', img: img0 },
+				{ 'descriprion': 'Hi-Back Beds', 'price': '11', 'company': 'Ikea', img: img0 },
+				{ 'descriprion': 'Hi-Back Bed', 'price': '15', 'company': 'Liddy', img: img0 },
+				{ 'descriprion': 'Hi-Back Bed', 'price': '70', 'company': 'Liddy', img: img0 },
+				{ 'descriprion': 'Hi-Back Bed', 'price': '21', 'company': 'Ikea', img: img0 },
+				{ 'descriprion': 'Hi-Back Bed', 'price': '76', 'company': 'Ikea', img: img0 },
+				{ 'descriprion': 'Hi-Back Bed', 'price': '73', 'company': 'Marcos', img: img0 },
+				{ 'descriprion': 'Hi-Back Beds', 'price': '11', 'company': 'Ikea', img: img0 },
+				{ 'descriprion': 'Hi-Back Bed', 'price': '15', 'company': 'Liddy', img: img0 },
+				{ 'descriprion': 'Hi-Back Bed', 'price': '70', 'company': 'Liddy', img: img0 },
+				{ 'descriprion': 'Hi-Back Bed', 'price': '21', 'company': 'Ikea', img: img0 },
+
+			],
+			productsDataFiltered: [],
+		},
+		topBarSection: {}
+	},
 	getState() {
 		return this._state
 	},
-	/* 	userDataStorage(d) {
-			localStorage.setItem('name', d.name);
-			localStorage.setItem('password', d.password);
-			localStorage.setItem('login', d.login);
-		}, */
-	/* 	handlerNavColorChange (setColor) {
-			if(window.location.pathname.includes('home')){
-				setColor('white')
-			}else {
-				setColor('black')
-			}
-	},
-		updateInputText(nameText, emailText, passwordText){
-			this._state.inputNameValue = nameText;
-			this._state.inputEmailValue = emailText;
-			this._state.inputPasswordValue = passwordText;
-			rerenderTree()
-			console.log(emailText)
-		}, */
-	rerenderTree() {
-		
+
+	_callSubscriber() {
+
 		console.log('tree')
 	},
-	rerender(observer) {
+	subscribe(observer) {
 		this.rerenderTree = observer;
 	},
 
-	
-
 	dispatch(action) {
 
-		if (action.type === 'HANDLER-NAV-COLOR-CHANGE') {
+		this._state.logginPage.inputNameValue = loggInReducer(this._state.logginPage.inputNameValue, action)
+		this._state.productsPage = productsReduser(this._state.productsPage, action)
+		this._state.topBarSection = topBarReducer(this._state.topBarSection, action)
 
-			if (window.location.pathname.includes('home')) {
-				action.setColor('white')
-			} else {
-				action.setColor('black')
-			}
-		} else if (action.type === 'UPDATE-INPUT-TEXT') {
-			this._state.inputNameValue = action.nameText;
-			this._state.inputEmailValue = action.emailText;
-			this._state.inputPasswordValue = action.passwordText;
-			this.rerenderTree()
-
-		} else if (action.type === 'USER-DATA-STORAGE') {
-			localStorage.setItem('name', action.userDataText.name);
-			localStorage.setItem('password', action.userDataText.password);
-			localStorage.setItem('login', action.userDataText.login);
-		} else if (action.type === 'REMOVE-USER-DATA') {
-			localStorage.removeItem('name');
-			localStorage.removeItem('password');
-			localStorage.removeItem('login');
-		}
+		this._callSubscriber(this._state)
 	}
 }
 
 
+ */

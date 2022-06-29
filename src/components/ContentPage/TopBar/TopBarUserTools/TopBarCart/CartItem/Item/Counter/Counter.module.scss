@@ -1,0 +1,70 @@
+.ItemAmountCounterContainer {
+	display: flex;
+	flex: 1 1 auto;
+	justify-content: end;
+}
+
+.ItemAmountCounter {
+	color: black;
+	margin: 0px 2rem 0px 0px;
+	font-size: 24px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+}
+
+
+.ButtonInc {
+	width: 20px;
+	height: 20px;
+	position: relative;
+	&::after{
+		content: '';
+		height: 2px;
+		width: 12px;
+		background-color: rgb(228, 157, 32);
+		position: absolute;
+		top: 50%;
+		left: 0;
+		transform: rotate(135deg);
+	}
+	&::before{
+		transform: rotate(45deg);
+		content: '';
+		height: 2px;
+		width: 12px;
+		background-color: rgb(228, 157, 32);
+		position: absolute;
+		top: 50%;
+		right: 0;
+	}
+}
+
+.ButtonDec {
+
+	width: 20px;
+	height: 20px;
+	position: relative;
+	&::after{
+		content: '';
+		height: 2px;
+		width: 12px;
+		background-color: rgb(228, 157, 32);
+		position: absolute;
+		top: 50%;
+		left: 0;
+		transform: rotate(-135deg);
+	}
+	&::before{
+		transform: rotate(-45deg);
+		content: '';
+		height: 2px;
+		width: 12px;
+		background-color: rgb(228, 157, 32);
+		position: absolute;
+		top: 50%;
+		right: 0;
+	}
+}

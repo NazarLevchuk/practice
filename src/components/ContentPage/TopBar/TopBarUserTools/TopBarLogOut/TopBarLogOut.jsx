@@ -1,11 +1,12 @@
 import React from 'react'
 import { ReactComponent as ArrowIcon } from '../../../../../img/svg/arrow.svg'
+import { removeUserDataActionCreator } from '../../../../../redux/loggInReducer'
 import s from './TopBarLogOut.module.scss'
 export const TopBarLogOut = ({color, dispatch, setIsLoggedIn}) => {
 
 	const removeUserData = ()=> {
 		
-		dispatch({type: 'REMOVE-USER-DATA'})
+		dispatch(removeUserDataActionCreator())
 		setIsLoggedIn(localStorage.getItem('login'))
 	}
 

@@ -5,14 +5,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import s from './ContentPageMain.module.scss'
 import { ProductsContent } from './ProductsContent/ProductsContent';
 
-export const ContentPageMain = ({ store }) => {
+export const ContentPageMain = () => {
 
 	return (
 		<div className={s.ContentPageMain}>
 			
 			<Routes>
-				<Route path='home' element={<HomeContent store={store} />} />
-				<Route path='products' element={<ProductsContent store={store} />} />
+				<Route path='home' element={<HomeContent />} />
+				<Route path='products' element={<ProductsContent />} />
 				<Route path='about' element={<AboutContent />} />
 			</Routes>
 		</div>

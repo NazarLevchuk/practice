@@ -5,12 +5,14 @@ import { TopBarNavigation } from './TopBarNavigation/TopBarNavigation'
 import { TopBarLogo } from './TopBarLogo/TopBarLogo';
 import { TopBarUserTools } from './TopBarUserTools/TopBarUserTools';
 import { useLocation } from 'react-router-dom';
+import { hendlerNavColorChangeActionCreator } from '../../../redux/topBarReducer';
+
 
 
 export const TopBar = ({dispatch, setIsLoggedIn}) => {
 	const[color, setColor] = useState('')
 	const location = useLocation();
-	const handlerNavChange = () => dispatch({type: 'HANDLER-NAV-COLOR-CHANGE', setColor});
+	const handlerNavChange = () => dispatch(hendlerNavColorChangeActionCreator(setColor));
 	useEffect(() => {
 		handlerNavChange()
 	}, [location])

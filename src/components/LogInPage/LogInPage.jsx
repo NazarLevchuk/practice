@@ -1,33 +1,34 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { upDateInputTextActionCreator, userDataStorageActionCreator } from '../../redux/loggInReducer';
 import './LogInPage.module.scss';
 import s from './LogInPage.module.scss';
 
 
 export const LogInPage = ({ setIsLoggedIn, dispatch, state }) => {
 
-	const navigate = useNavigate();
+	const [buttonState, setButtonState] = useState(false);
+	const [errorEmailBlockState, setEmailErrorBlockState] = useState(true);
+	const [errorPasswordBlockState, setPasswordErrorBlockState] = useState(true);
 
+	const navigate = useNavigate();
 	const nameRef = useRef();
 	const loginRef = useRef();
 	const passwordRef = useRef();
 
 	const handleSubmit = (event) => {
-		event.preventDefault();
 		navigate("/home");
-
 		let userDataText = { name: nameRef.current.value, login: loginRef.current.value, password: passwordRef.current.value };
-		dispatch({ type: 'USER-DATA-STORAGE', userDataText: userDataText })/* userDataStorage(userDataText) */;
+		dispatch(userDataStorageActionCreator(userDataText))
 		setIsLoggedIn(localStorage.getItem('login'));
+		state.loggInReducer.inputNameValue = ''
+		state.loggInReducer.inputEmailValue = ''
+		state.loggInReducer.inputPasswordValue = ''
+		event.preventDefault();
 	}
 
-	const [buttonState, setButtonState] = useState(false);
-	const [errorEmailBlockState, setEmailErrorBlockState] = useState(true);
-	const [errorPasswordBlockState, setPasswordErrorBlockState] = useState(true);
-
-
 	//--------------------------LoggIn
-	const handlerBlurEmail = (e) => {
+	const handlerBlurEmail = () => {
 		const rp = /^\+380\d{9}$/;
 		const re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 		if (!re.test(String(loginRef.current.value).toLowerCase()) && !rp.test(String(loginRef.current.value))) {
@@ -38,7 +39,7 @@ export const LogInPage = ({ setIsLoggedIn, dispatch, state }) => {
 			setEmailErrorBlockState(true);
 		}
 	}
-	const handlerChangeEmail = (e) => {
+	const handlerChangeEmail = () => {
 		const rp = /^\+380\d{9}$/;
 		const re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 		if (!re.test(String(loginRef.current.value).toLowerCase()) && !rp.test(String(loginRef.current.value))) {
@@ -51,7 +52,7 @@ export const LogInPage = ({ setIsLoggedIn, dispatch, state }) => {
 	//--------------------------------
 
 	//--------------------------Password
-	const handlerBlurPass = (e) => {
+	const handlerBlurPass = () => {
 		const rpas = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g
 		if (!rpas.test(String(passwordRef.current.value))) {
 			setButtonState(true);
@@ -61,7 +62,7 @@ export const LogInPage = ({ setIsLoggedIn, dispatch, state }) => {
 			setEmailErrorBlockState(true);
 		}
 	}
-	const handlerChangePass = (e) => {
+	const handlerChangePass = () => {
 		const rpas = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g
 		if (!rpas.test(String(passwordRef.current.value))) {
 			setButtonState(true);
@@ -71,7 +72,7 @@ export const LogInPage = ({ setIsLoggedIn, dispatch, state }) => {
 		};
 	}
 	//--------------------------
-	
+
 	const onEmailBothCall = () => {
 		handlerChangeEmail();
 		onInputChange();
@@ -80,13 +81,12 @@ export const LogInPage = ({ setIsLoggedIn, dispatch, state }) => {
 		handlerChangePass();
 		onInputChange();
 	}
-
-
+  
 	const onInputChange = () => {
 		let nameText = nameRef.current.value
 		let emailText = loginRef.current.value
 		let passwordText = passwordRef.current.value
-		dispatch({ type: 'UPDATE-INPUT-TEXT', nameText: nameText, emailText: emailText, passwordText: passwordText })/* (nameText, emailText, passwordText) */
+		dispatch(upDateInputTextActionCreator(nameText, emailText, passwordText))
 	}
 
 	const ErrorBlock = (e) => {
@@ -101,17 +101,18 @@ export const LogInPage = ({ setIsLoggedIn, dispatch, state }) => {
 				<div className={s.logInForm_header}>LoggIn</div>
 				<form onSubmit={handleSubmit} className={s.form_container}>
 					<div className={s.input_container}>
-						<input value={state.inputNameValue} ref={nameRef} onChange={onInputChange} required placeholder='Your name'></input>
+						<input value={state.loggInReducer.inputNameValue} ref={nameRef} onChange={onInputChange} required placeholder='Your name'></input>
 					</div>
 					<div className={s.input_container}> {errorEmailBlockState ? null : ErrorBlock()}
-						<input value={state.inputEmailValue} ref={loginRef} onBlur={handlerBlurEmail} onChange={onEmailBothCall} required name='email' type='text' placeholder='E-mail or Phone number...'></input>
+						<input value={state.loggInReducer.inputEmailValue} ref={loginRef} onBlur={handlerBlurEmail} onChange={onEmailBothCall} required name='email' type='text' placeholder='E-mail or Phone number...'></input>
 					</div>
 					<div className={s.input_container}> {errorPasswordBlockState ? null : ErrorBlock()}
-						<input value={state.inputPasswordValue} ref={passwordRef} onBlur={handlerBlurPass} onChange={onPasswordBothCall} required name='password' type='password' placeholder='Password....'></input>
+						<input value={state.loggInReducer.inputPasswordValue} ref={passwordRef} onBlur={handlerBlurPass} onChange={onPasswordBothCall} required name='password' type='password' placeholder='Password....'></input>
 					</div>
 					<button disabled={buttonState} type='submit'>Enter</button>
 				</form>
 			</div>
 		</div>
 	);
+	
 }

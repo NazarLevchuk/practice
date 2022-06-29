@@ -1,6 +1,18 @@
-
 .ProductsContentItems {
 	display: flex;
-	width: 100%;
 	flex-wrap:wrap;
+	width: 100%;
+	animation: move-product-items 1s 0.5s forwards;
+	opacity: 0;
+	margin: 100px 0px 0px 0px;
+}
+@keyframes move-product-items {
+	0%{
+		opacity: 0;
+		margin: 100px 0px 0px 0px;
+	}
+	100%{
+		opacity: 1;
+		margin: 0px 0px 0px 0px;
+	}
 }

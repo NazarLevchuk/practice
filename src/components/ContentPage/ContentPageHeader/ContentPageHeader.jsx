@@ -21,6 +21,7 @@ export class ContentPageHeader extends React.Component {
 					<>
 						<div className={s.ContentPageHeader}>
 							Hello, {this.name}
+							
 							<button onClick={this.toggleHeader}></button>
 						</div>
 					</>) : null}

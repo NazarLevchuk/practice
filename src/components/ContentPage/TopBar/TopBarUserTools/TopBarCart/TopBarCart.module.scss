@@ -1,3 +1,58 @@
+.TopBarCartItems_container {
+	display: flex;
+	justify-content: flex-end;
+	z-index: 1000;
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(116, 116, 116, 0.786);
+	top: 0;
+	left: 0;
+	cursor: default;
+
+}
+.TopBarCartItemsBody {
+	background-color: #fff;
+	width: 25vw;
+	padding: 15px 10px;
+	position: relative;
+	animation-duration: 0.5s;
+	animation-name: show-cart;
+}
+@keyframes show-cart {
+	0%{
+		left: 100%;
+	}
+	100%{
+		left: 0;
+	}
+}
+
+.ItemsBodyButton {
+	width: 40px;
+	height: 40px;
+	position: relative;
+	&::before {
+		content: "";
+		left: 0;
+		top: 50%;
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		background-color:	rgb(0, 0, 0);
+		transform: rotate(45deg);
+	}
+	&::after {
+		content: "";
+		left: 0;
+		top: 50%;
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		background-color: black;
+		transform: rotate(-45deg);
+	}
+}
 .TopBarCart {
 	display: flex;
 	justify-content: center;

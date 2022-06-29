@@ -1,23 +1,19 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;900&display=swap');
 
-html.touch {
-	color: red;
-}
 
-#root{
-	height: 100%;
-	font-style: italic;
-}
+
+
 
 body {
   margin: 0;
-
 }
+
 * {
 	padding: 0px;
 	margin: 0px;
 	border: 0px;
+	
 }
 *,
 *:before,
@@ -83,4 +79,10 @@ h5,
 h6 {
 	font-weight: inherit;
 	font-size: inherit;
+}
+
+body._active {
+	overflow: hidden;
+	height: 200px;
+	margin: 0px 17px 0px 0px;
 }
