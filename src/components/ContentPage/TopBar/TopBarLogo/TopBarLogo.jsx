@@ -5,7 +5,7 @@ import s from './TopBarLogo.module.scss'
 export const TopBarLogo = ({handlerNavChange}) => {
 	return (
 		<div  className={s.Logo_container}>
-			<NavLink onClick={handlerNavChange} to="/home"><Logo cursor={'pointer'} /></NavLink>
+			<NavLink onClick={handlerNavChange} to="/"><Logo cursor={'pointer'} /></NavLink>
 		</div>
 	)
 }

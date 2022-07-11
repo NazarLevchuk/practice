@@ -1,0 +1,136 @@
+.FormContainer {
+position: absolute;
+	height: 100vh;
+	width: 100vw;
+	top: 0;
+	left: 0;
+	cursor: default;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.Overlay {
+	position: absolute;
+	z-index: 100;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(96, 96, 96, 0.608);
+	top: 0;
+	left: 0;
+	cursor: default;
+}
+.FormBody input, label {
+	color:#000;
+}
+.FormBody label {
+	margin: 0px 0px 10px 0px;
+}
+.FormBody {
+	position: relative;
+	z-index: 150;
+	height: 80vh;
+	width: 40vw;
+	background-color: #fff;
+	border-radius: 10px;
+	opacity: 0;
+	animation: poop-up-form 0.5s forwards;
+	display: flex;
+	flex-direction: column;
+	padding: 60px 30px;
+	@media (max-width: 1200px){
+		width: 50vw;
+	}
+	@media (max-width: 770px){
+		width: 70vw;
+	}
+	@media (max-width: 570px){
+		width: 100vw;
+		height: 100vh;
+		border-radius: 0px;
+		padding: 60px 20px 0px 20px;
+		position: relative;
+	}
+}
+@keyframes poop-up-form{
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+.ButtonContainer {
+	position: absolute;
+	top: 1vw;
+	right: 1vw;
+}
+.FormBodyButton {
+	width: 40px;
+	height: 40px;
+	position: relative;
+	&::before {
+		content: "";
+		left: 0;
+		top: 50%;
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		background-color:	rgb(0, 0, 0);
+		transform: rotate(45deg);
+	}
+	&::after {
+		content: "";
+		left: 0;
+		top: 50%;
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		background-color: black;
+		transform: rotate(-45deg);
+	}
+}
+.InputBody {
+	display: flex;
+	flex-direction: column;
+}
+.InputBody input{
+	margin: 0px 0px 20px 0px;
+	font-size: 30px;
+	border-radius: 10px;
+	border: solid black;
+	padding: 5px 15px;
+	width: 100%;
+}
+
+.SendButton button{
+	
+	align-items: center;
+	text-align: center;
+	text-transform: uppercase;
+	border-radius: 5px;
+	width: 400px;
+	height: 40px;
+	background-color: rgb(228, 157, 32);
+	
+	@media (max-width: 570px){
+		border-radius: 0px;
+		margin: auto 0px 0px 0px;
+		height: auto;
+		padding: 20px 0px;
+		width: 100vw;
+	}
+	&:hover {
+		background-color: rgb(189, 125, 15);
+	}
+}
+.SendButton {
+	margin: 20px 0px 0px 0px;
+	display: flex;
+	justify-content: center;
+	@media (max-width: 570px){
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		margin: auto 0px 0px 0px;
+	}
+}

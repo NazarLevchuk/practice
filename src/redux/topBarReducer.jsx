@@ -6,10 +6,23 @@ let initialState = []
 const topBarReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case HENDLER_NAV_COLOR_CHANGE:
-			if (window.location.pathname.includes('home')) {
+			if (window.location.pathname === '/') {
 				action.setColor('white')
+				if (window.scrollY > 50) {
+					window.addEventListener("scroll", () => {
+						action.setColor('black')
+					});
+				} else {
+					window.addEventListener("scroll", () => {
+						action.setColor('white')
+					});
+				}
 			} else {
 				action.setColor('black')
+				window.addEventListener("scroll", () => {
+					action.setColor('black')
+				});
+				
 			}
 			return state;
 		case TOGGLE_SHOW_CART:

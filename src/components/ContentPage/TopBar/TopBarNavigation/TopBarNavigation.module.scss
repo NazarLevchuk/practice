@@ -1,8 +1,9 @@
-$color: color;
-
-.TopBarNavigation_container {
+.TopBarNavigationContainer {
 	flex: 0 1 33.333%;
-	ul{
+	@media (max-width: 1000px){
+		display: none;
+	}
+	ul{ 
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -25,8 +26,16 @@ $color: color;
 				&:hover {
 					&::after {
 						width: 100%;
+
 					}
 				}
 			}
 		}
 		}
+
+.CloseButtonContainer{
+	position: absolute;
+	z-index: 3001;
+	top: 30px;
+	right: 30px;
+}

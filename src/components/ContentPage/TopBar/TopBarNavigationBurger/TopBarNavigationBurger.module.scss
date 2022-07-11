@@ -1,0 +1,93 @@
+.TopBarNavigationContainer {
+	display: none;
+	@media (max-width: 1000px){
+		position: absolute;
+		z-index: 3000;
+		height: 100vh;
+		width: 100vw;
+		top: 0;
+		left: 0;
+		background-color: rgba(108, 108, 108, 0.852);
+		transition: all 0.3s ease 0s;
+		overflow: hidden;
+	}
+	ul{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 100%;
+		@media (max-width: 1000px){
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+			li {
+				font-size: 20px;
+				font-weight: 600;
+				position: relative;
+				@media (max-width: 1000px){
+					margin: 0px 0px 50px 0px;
+					font-size: 40px;
+				}
+				&::after {
+					content: '';
+					position: absolute;
+					right: 0;
+					bottom: -5px;
+					width: 0px;
+					height: 1.5px;
+					
+					background-color: rgb(255, 255, 255);
+					transition: width 0.35s;
+				}
+				&:hover {
+					&::after {
+						width: 100%;
+						@media (hover: none){
+							width: 0px;
+						}
+					}
+				}
+			}
+		}
+		}
+
+.CloseButtonContainer{
+	position: absolute;
+	z-index: 3001;
+	top: 30px;
+	right: 30px;
+}
+
+.CloseButton {
+	display: none;
+	@media (max-width: 1000px){
+		display: block;
+		position: relative;
+		height: 50px;
+		width: 50px;
+		
+		&::before {
+			content: "";
+			left: 0;
+			top: 50%;
+			position: absolute;
+			width: 100%;
+			height: 2px;
+			background-color:	rgb(0, 0, 0);
+			transform: rotate(45deg);
+			background-color: #fff;
+		}
+		&::after {
+			content: "";
+			left: 0;
+			top: 50%;
+			position: absolute;
+			width: 100%;
+			height: 2px;
+			background-color: black;
+			transform: rotate(-45deg);
+			background-color: #fff;
+		}
+	}
+}

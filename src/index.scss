@@ -28,10 +28,7 @@ a:focus,
 a:active {
 	outline: none;
 }
-html,
-body {
-	height: 100%;
-}
+
 body {
 	color: black;
 	line-height: 1;
@@ -83,6 +80,5 @@ h6 {
 
 body._active {
 	overflow: hidden;
-	height: 200px;
-	margin: 0px 17px 0px 0px;
+	margin: 0px 0px 0px 0px;
 }

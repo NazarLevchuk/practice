@@ -1,39 +1,14 @@
-import img1 from '../img/jpg/Items_img/sofa1.jpg'
-import img2 from '../img/jpg/Items_img/sofa2.jpg'
-import img3 from '../img/jpg/Items_img/sofa3.jpg'
-import img4 from '../img/jpg/Items_img/sofa4.jpg'
-
 const ADD_ITEM = 'ADD-ITEM';
 const ITEMS_SORTING_COMPANY = 'ITEMS-SORTING-COMPANY';
 const ITEMS_SORTING_TEXT = 'ITEMS-SORTING-TEXT';
 const ITEMS_SORTING_PRICE = 'ITEMS-SORTING-PRICE';
+const SET_ITEMS_DATA = 'SET-ITEMS-DATA';
+const IS_FETCH = 'IS-FETCH';
 
 let initialState = {
-	productsData: [
-		{ 'descriprion': 'Hi-Back Seat', 'price': '42', 'company': 'Marcos', img: img3 },
-		{ 'descriprion': 'Hi-Back Sofa', 'price': '32', 'company': 'Caressa', img: img2 },
-		{ 'descriprion': 'Hi-Back Bed', 'price': '72', 'company': 'Caressa', img: img1 },
-		{ 'descriprion': 'Hi-Back Bed', 'price': '76', 'company': 'Ikea', img: img2 },
-		{ 'descriprion': 'Hi-Back Bed', 'price': '73', 'company': 'Marcos', img: img1 },
-		{ 'descriprion': 'Hi-Back Beds', 'price': '11', 'company': 'Ikea', img: img4 },
-		{ 'descriprion': 'Hi-Back Bed', 'price': '15', 'company': 'Liddy', img: img3 },
-		{ 'descriprion': 'Hi-Back Bed', 'price': '70', 'company': 'Liddy', img: img2 },
-		{ 'descriprion': 'Hi-Back Bed', 'price': '21', 'company': 'Ikea', img: img1 },
-		{ 'descriprion': 'Hi-Back Bed', 'price': '76', 'company': 'Ikea', img: img4 },
-		{ 'descriprion': 'Hi-Back Bed', 'price': '73', 'company': 'Marcos', img: img1 },
-		{ 'descriprion': 'Hi-Back Beds', 'price': '11', 'company': 'Ikea', img: img1 },
-		{ 'descriprion': 'Hi-Back Bed', 'price': '15', 'company': 'Liddy', img: img1 },
-		{ 'descriprion': 'Hi-Back Bed', 'price': '70', 'company': 'Liddy', img: img2 },
-		{ 'descriprion': 'Hi-Back Bed', 'price': '21', 'company': 'Ikea', img: img4 },
-		{ 'descriprion': 'Hi-Back Bed', 'price': '76', 'company': 'Ikea', img: img1 },
-		{ 'descriprion': 'Hi-Back Bed', 'price': '73', 'company': 'Marcos', img: img1 },
-		{ 'descriprion': 'Hi-Back Beds', 'price': '11', 'company': 'Ikea', img: img1 },
-		{ 'descriprion': 'Hi-Back Bed', 'price': '15', 'company': 'Liddy', img: img2 },
-		{ 'descriprion': 'Hi-Back Bed', 'price': '70', 'company': 'Liddy', img: img1 },
-		{ 'descriprion': 'Hi-Back Bed', 'price': '21', 'company': 'Ikea', img: img1 },
-
-	],
+	productsData: [],
 	productsDataFiltered: '',
+	isFetch: false,
 
 }
 
@@ -41,10 +16,10 @@ const productsReduser = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_ITEM: {
 			const newArr = { 
-				//Зробити щось з фільтеред дата(сторінка хоум не добавляє ітеми)
-				img: state.productsDataFiltered[action.id.id].img, 
-				descriprion: state.productsDataFiltered[action.id.id].descriprion, 
-				price: state.productsDataFiltered[action.id.id].price, 
+				img: (state.productsDataFiltered || state.productsData)[action.id.id].img, 
+				descriprion: (state.productsDataFiltered || state.productsData)[action.id.id].descriprion, 
+				price: (state.productsDataFiltered || state.productsData)[action.id.id].price, 
+				amount: 1,
 			}
 			const arr = JSON.parse(localStorage.getItem('cart')) || [];
 			arr.push(newArr);
@@ -68,8 +43,17 @@ const productsReduser = (state = initialState, action) => {
 						if (+item.price <= +action.searchPrice) {
 							return item
 					}
-					
 				})
+			}
+		}
+		case SET_ITEMS_DATA: {
+			return {
+				...state, productsData: action.items
+			}
+		}
+		case IS_FETCH: {
+			return {
+				...state, isFetch: action.isFetch
 			}
 		}
 		default:
@@ -88,6 +72,12 @@ export const itemsSortingTextActionCreator = (searchText) => {
 }
 export const itemsSortingPriceActionCreator = (searchPrice) => {
 	return { type: ITEMS_SORTING_PRICE, searchPrice: searchPrice }
+}
+export const setItemsDataActionCreator = (items) => {
+	return { type: SET_ITEMS_DATA, items }
+}
+export const isFetchActionCreator = (isFetch) => {
+	return { type: IS_FETCH, isFetch }
 }
 
 export default productsReduser;

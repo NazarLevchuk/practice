@@ -2,8 +2,10 @@
 	display: flex;
 	align-items: center;
 	font-size: 20px;
-	justify-content: flex-end;
 	cursor: pointer;
+	@media (max-width: 1000px){
+		flex: 0 1 50%;
+	}
 	&:hover{
 		svg {
 			transform: rotate(-90deg);

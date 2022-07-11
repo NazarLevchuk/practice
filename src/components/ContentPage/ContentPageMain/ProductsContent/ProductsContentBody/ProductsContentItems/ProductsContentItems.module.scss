@@ -1,18 +1,42 @@
 .ProductsContentItems {
 	display: flex;
-	flex-wrap:wrap;
+	flex-wrap: wrap;
 	width: 100%;
 	animation: move-product-items 1s 0.5s forwards;
 	opacity: 0;
 	margin: 100px 0px 0px 0px;
+	position: relative;
 }
 @keyframes move-product-items {
-	0%{
+	0% {
 		opacity: 0;
 		margin: 100px 0px 0px 0px;
 	}
-	100%{
+	100% {
 		opacity: 1;
 		margin: 0px 0px 0px 0px;
 	}
+}
+.ProductsContentItemsContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0px 0px 40px 0px;
+	width: 100%;
+}
+.ProductsContentButton {
+	background-color: rgb(228, 157, 32);
+	color: #fff;
+	font-size: 20px;
+	padding: 10px 60px;
+	border-radius: 5px;
+	text-align: center;
+	&:hover {
+		background-color: rgb(189, 125, 15);
+	}
+}
+.isFetch {
+	position: absolute;
+	bottom: 100px;
+	left: 50%;
 }

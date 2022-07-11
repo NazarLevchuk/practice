@@ -2,16 +2,33 @@
 	flex: 1 1 33.333%;
 	font-size: 25px;
 	display: flex;
-	min-height: 240px;
+	min-width: 220px;
 	flex-direction: column;
 	padding: 0px 10px;
+	
+	/* @media (max-width: 550px){
+		width: 300px;
+	} */
 }
 
 .FeaturedItemImg {
 	position: relative;
-	flex: 1 1 auto;
 	overflow: hidden;
 	border-radius: 10px;
+	height: 20vh;
+	@media (max-width: 640px){
+		height: 30vh;
+	}
+	@media (hover:none){
+		&:hover{
+			&::after{
+				display: none;
+			}
+			&::before{
+				display: none;
+			}
+		}
+	}
 	&:hover {
 		&::after {
 			content: "";
@@ -49,8 +66,12 @@
 	left: 0;
 	object-fit: cover;
 	transition: transform 1.5s ease 0s;
-
+	
 	&:hover {
+		@media (hover:none){
+				transform: none;
+				filter: none;
+		}
 		transform: scale(1.05);
 		filter: grayscale(100%);
 	}

@@ -1,16 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useEffect } from 'react';
 import s from './CartItem.module.scss'
 import { Item } from './Item/Item'
 
-export const CartItem = ({ state, dispatch }) => {
+export const CartItem = ({ state, dispatch, showForm }) => {
 
+
+
+	const [buttonFormState, setButtonFormState]	= useState(true);
+	
 	const cartList = JSON.parse(localStorage.getItem('cart')) || []
 
+
 	const result = cartList.reduce(function (sum, current) {
-		return +sum + +current.price;
+		return +sum + (+current.price * current.amount);
 	}, 0);
 
-	let items = cartList.map((item, id) => <Item dispatch={dispatch} item={item} id={id}/>)
+	
+useEffect(() => {
+	if((JSON.parse(localStorage.getItem('cart'))|| []).length !== 0){
+		setButtonFormState(false)
+	}else{
+		setButtonFormState(true)
+	}
+})
+
+	let items = cartList.map((item, id) => <Item setButtonFormState={setButtonFormState} key={id} dispatch={dispatch} item={item} id={id}/>)
 
 	return (
 		<div className={s.CartItems}>
@@ -21,7 +36,7 @@ export const CartItem = ({ state, dispatch }) => {
 					<div className={s.TotalSumm}>
 						Total: ${result}
 					</div>
-					<button className={s.ConfirmBtn}>Confirm !</button></div>
+					<button disabled={buttonFormState} type='button' onClick={showForm} className={s.ConfirmBtn}>Confirm !</button></div>
 				</div>
 			<div>
 		</div>

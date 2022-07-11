@@ -2,39 +2,80 @@
 	padding: 0px 10px;
 	display: flex;
 	flex-direction: column;
-	width: 10vw;
+	width: 200px;
+	
+	@media (max-width: 640px){
+		display: grid;
+		grid-template: 
+		'b1 b1'
+		'b2 b3'
+		;
+		width: 100%;
+		margin: 0px 0px 20px 0px;
+	}
 }
 
 .SidebarSearchArea {
 	padding: 10px 10px;
 	background-color: rgb(251, 253, 253);
-	font-size: 17px;
+	font-size: 22px;
 	cursor: pointer;
+	grid-area: b1;
+	margin: 0px 0px 20px 0px;
+	@media (max-width: 640px){
+		font-size: 20px;
+	}
 }
 
 .SidebarCompanyListContainer{
 	padding: 5px 0px;
-	font-size: 17px;
+	font-size: 25px;
 	font-weight: 700;
 	line-height: 20px;
-	
+	grid-area: b2;
+	display: flex;
+	flex-direction: column;
+	margin: 0px 0px 20px 0px;
 }
+.SidebarCompanyListContainerTitle {
+	@media (max-width: 640px){
+		font-size: 30px;
+		margin: 0px 0px 10px 0px;
+	}
+}
+
 .SidebarCompanyList > li{
 	padding: 5px 10px;
 	font-weight: normal;
-	font-size: 14px;
+	font-size: 17px;
+	line-height: 30px;
 	cursor: pointer;
+	@media (max-width: 640px){
+		font-size: 20px;
+	}
+}
+.SidebarCompanyList {
+	@media (max-width: 640px){
+		display: flex;
+		flex-wrap: wrap;
+	}
+
 }
 .SidebarPriceFilter{
 	padding: 5px 0px;
-	font-size: 17px;
+	font-size: 25px;
 	font-weight: 700;
+	grid-area: b3;
+	@media (max-width: 640px){
+		font-size: 20px;
+	}
 }
 
 
 .SidebarPriceFilterRange {
 	display: flex;
 	flex-direction: column;
+
 	& input {
 		margin: 15px 0px;
 	}

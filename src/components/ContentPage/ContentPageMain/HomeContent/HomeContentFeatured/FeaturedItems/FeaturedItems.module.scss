@@ -1,14 +1,17 @@
 .FeaturedItems {
 	padding: 0px 2vw;
-	height: 100%;
 	width: 100%;
+	min-height: 200px;
 	display: flex;
 	max-width: 1200px;
 	animation-name: move-items;
 	animation-duration: 1s;
 	animation-delay: 0.5s;
+	position: relative;
 	opacity: 0;
 	animation-fill-mode: forwards;
+	justify-content: center;
+
 }
 
 .LinkBlock {
@@ -20,12 +23,40 @@
 	z-index: 10;
 }
 @keyframes move-items {
-	0%{
+	0% {
 		margin: 0px -300px 0px 0px;
 		opacity: 0;
 	}
-	100%{
+	100% {
 		opacity: 1;
 		margin: 0px 0px 0px 0px;
 	}
 }
+.rightArrow {
+	
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	right: 2vw;
+	font-size: 3rem;
+	color: rgb(228, 157, 32);
+	z-index: 600;
+	cursor: pointer;
+	user-select: none;
+}
+.leftArrow {
+
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	left: 2vw;
+	font-size: 3rem;
+	color: rgb(228, 157, 32);
+	z-index: 600;
+	cursor: pointer;
+	user-select: none;
+}
+.slide_active {
+		width: 300px;
+	}
+

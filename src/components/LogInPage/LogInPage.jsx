@@ -17,7 +17,7 @@ export const LogInPage = ({ setIsLoggedIn, dispatch, state }) => {
 	const passwordRef = useRef();
 
 	const handleSubmit = (event) => {
-		navigate("/home");
+		navigate("/");
 		let userDataText = { name: nameRef.current.value, login: loginRef.current.value, password: passwordRef.current.value };
 		dispatch(userDataStorageActionCreator(userDataText))
 		setIsLoggedIn(localStorage.getItem('login'));
@@ -82,6 +82,7 @@ export const LogInPage = ({ setIsLoggedIn, dispatch, state }) => {
 		onInputChange();
 	}
   
+	
 	const onInputChange = () => {
 		let nameText = nameRef.current.value
 		let emailText = loginRef.current.value
@@ -103,11 +104,13 @@ export const LogInPage = ({ setIsLoggedIn, dispatch, state }) => {
 					<div className={s.input_container}>
 						<input value={state.loggInReducer.inputNameValue} ref={nameRef} onChange={onInputChange} required placeholder='Your name'></input>
 					</div>
-					<div className={s.input_container}> {errorEmailBlockState ? null : ErrorBlock()}
-						<input value={state.loggInReducer.inputEmailValue} ref={loginRef} onBlur={handlerBlurEmail} onChange={onEmailBothCall} required name='email' type='text' placeholder='E-mail or Phone number...'></input>
+					<div className={s.input_container}> 
+						<input style={errorEmailBlockState ? {border: 'solid black'} : {border: 'solid red'}} value={state.loggInReducer.inputEmailValue} ref={loginRef} onBlur={handlerBlurEmail} onChange={onEmailBothCall} required name='email' type='text' placeholder='E-mail or Phone number...'></input>
+					{errorEmailBlockState ? null : ErrorBlock()}
 					</div>
-					<div className={s.input_container}> {errorPasswordBlockState ? null : ErrorBlock()}
-						<input value={state.loggInReducer.inputPasswordValue} ref={passwordRef} onBlur={handlerBlurPass} onChange={onPasswordBothCall} required name='password' type='password' placeholder='Password....'></input>
+					<div className={s.input_container}> 
+						<input style={errorPasswordBlockState ? {border: 'solid black'} : {border: 'solid red'}} value={state.loggInReducer.inputPasswordValue} ref={passwordRef} onBlur={handlerBlurPass} onChange={onPasswordBothCall} required name='password' type='password' placeholder='Password....'></input>
+					{errorPasswordBlockState ? null : ErrorBlock()}
 					</div>
 					<button disabled={buttonState} type='submit'>Enter</button>
 				</form>

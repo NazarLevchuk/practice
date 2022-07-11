@@ -11,9 +11,9 @@ export const ContentPageMain = () => {
 		<div className={s.ContentPageMain}>
 			
 			<Routes>
-				<Route path='home' element={<HomeContent />} />
-				<Route path='products' element={<ProductsContent />} />
-				<Route path='about' element={<AboutContent />} />
+				<Route exact path='/' element={<HomeContent />} />
+				<Route path='/products' element={<ProductsContent />} />
+				<Route path='/about' element={<AboutContent />} />
 			</Routes>
 		</div>
 	)

@@ -1,8 +1,29 @@
 .MainTopBar {
-
-	padding: 5px 0px;
+	width: 100vw;
+	position: fixed;
+	top: 0;
+	left: 0;
 	color: rgb(255, 255, 255);
+	z-index: 500;
+	border-radius: 0px 0px 10px 10px;
+	transition: all 0.3s ease 0s;
+	padding: 5px 0px 5px 0px;
+}
+.MainTopBarContent {
+	max-width: 1200px;
 	display: flex;
 	justify-content: space-between;
 	height: 5rem;
+	align-items: center;
+	margin: 0px auto;
+	padding: 0px 2vw;
+}
+.TopBarToggle {
+	display: none;
+	@media (max-width: 1000px) {
+		order: 3;
+		flex: 0 1 33.333%;
+		display: flex;
+		justify-content: flex-end;
+	}
 }

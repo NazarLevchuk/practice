@@ -3,13 +3,12 @@
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
-	background: rgb(105,105,105);
-	background: linear-gradient(180deg, rgba(105,105,105,0.7959558823529411) 0%, rgba(255,255,255,0) 30%, rgba(255,210,126,0.7987570028011204) 100%);
+	overflow: hidden;
+	margin: -100px 0px 0px 0px;
 }
 .logInForm {
-	padding: 100px 0px 0px 0px;
+	margin: auto 0px;
 	width: 700px;
-	height: 200px;
 	display: flex;
 	flex-direction: column;
 }
@@ -30,14 +29,23 @@
 	border: solid black;
 	padding: 5px 15px;
 	width: 100%;
+	@media (max-width: 510px){
+		font-size: 15px;
+		padding: 10px 15px;
+	}
+	@media (max-width: 930px){
+		
+	}
 }
+
 .form_container button {
 	font-weight: 700;
 	align-self: center;
 	font-size: 30px;
 	padding: 5px 40px;
 	border-radius: 10px;
-	border: solid black;
+	background-color: rgb(228, 157, 32);
+	color:white;
 }
 
 .error_block {
@@ -52,6 +60,9 @@
 	left: 0;
 	top: 50%;
 	transform: translate(-100%, calc(-50% - 10px));
+	@media (max-width: 930px){
+		display: none;
+	}
 }
 
 .input_container {
