@@ -3,7 +3,7 @@ import s from './ProductsContentBody.module.scss'
 import { ProductsContentSidebar } from './ProductsContentSidebar/ProductsContentSidebar';
 import { ProductsContentItems } from './ProductsContentItems/ProductsContentItems';
 import { FeaturedItem } from '../../HomeContent/HomeContentFeatured/FeaturedItems/FeaturedItem/FeaturedItem';
-import { addItemActionCreator, isFetchActionCreator, itemsSortingCompanyActionCreator, itemsSortingPriceActionCreator, itemsSortingTextActionCreator } from '../../../../../redux/productsReduser';
+import { addItemActionCreator, isFetchActionCreator, itemsSortingCompanyActionCreator, itemsSortingPriceActionCreator, itemsSortingTextActionCreator, resetSortActionCreator } from '../../../../../redux/productsReduser';
 import * as axios from 'axios'
 import { setItemsDataActionCreator } from '../../../../../redux/productsReduser'
 
@@ -74,7 +74,9 @@ export const ProductsContentBody = ({ state, dispatch }) => {
       width: '50%'
     }
 }
-
+const resetSort = () => {
+	dispatch(resetSortActionCreator())
+}
 const addArticle = (id) => {
 	dispatch(addItemActionCreator(id));
 }
@@ -84,7 +86,7 @@ style={StyleItem} key={id} img={newItem.img} id={id}
 
 return (
 	<div className={s.ProductsContentBody}>
-		<ProductsContentSidebar hendlerPriceChange={hendlerPriceChange} handlerSearchCompany={handlerSearchCompany} hendlerSearchSearch={hendlerSearchSearch} searchText={searchValue.searchText} searchPrice={searchValue.searchPrice} state={state} />
+		<ProductsContentSidebar resetSort={resetSort} hendlerPriceChange={hendlerPriceChange} handlerSearchCompany={handlerSearchCompany} hendlerSearchSearch={hendlerSearchSearch} searchText={searchValue.searchText} searchPrice={searchValue.searchPrice} state={state} />
 		<ProductsContentItems isFetch={state.productsReduser.isFetch} countInc={countInc} dispatch={dispatch} ItemElements={ItemElements} />
 	</div>
 )

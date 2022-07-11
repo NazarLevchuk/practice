@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './ProductsContentSidebar.module.scss'
 
-export const ProductsContentSidebar = ({ hendlerPriceChange, hendlerSearchSearch, handlerSearchCompany, searchPrice, searchText }) => {
+export const ProductsContentSidebar = ({ resetSort, hendlerPriceChange, hendlerSearchSearch, handlerSearchCompany, searchPrice, searchText }) => {
 
 	return (
 		<div className={s.ProductsContentSidebar}>
@@ -9,7 +9,7 @@ export const ProductsContentSidebar = ({ hendlerPriceChange, hendlerSearchSearch
 			<div className={s.SidebarCompanyListContainer}>	
 			<div className={s.SidebarCompanyListContainerTitle}>Company</div>
 				<ul className={s.SidebarCompanyList}>
-					<li id='' onClick={handlerSearchCompany}>All</li>
+					<li  onClick={resetSort}>All</li>
 					<li id='Ikea' onClick={handlerSearchCompany}>Ikea</li>
 					<li id='Marcos' onClick={handlerSearchCompany}>Marcos</li>
 					<li id='Caressa' onClick={handlerSearchCompany}>Caressa</li>

@@ -4,6 +4,7 @@ const ITEMS_SORTING_TEXT = 'ITEMS-SORTING-TEXT';
 const ITEMS_SORTING_PRICE = 'ITEMS-SORTING-PRICE';
 const SET_ITEMS_DATA = 'SET-ITEMS-DATA';
 const IS_FETCH = 'IS-FETCH';
+const RESET_SORT = 'RESET-SORT';
 
 let initialState = {
 	productsData: [],
@@ -46,6 +47,11 @@ const productsReduser = (state = initialState, action) => {
 				})
 			}
 		}
+		case RESET_SORT: {
+			return {
+				...state,productsDataFiltered: ''
+			}
+		}
 		case SET_ITEMS_DATA: {
 			return {
 				...state, productsData: action.items
@@ -78,6 +84,9 @@ export const setItemsDataActionCreator = (items) => {
 }
 export const isFetchActionCreator = (isFetch) => {
 	return { type: IS_FETCH, isFetch }
+}
+export const resetSortActionCreator = () => {
+	return { type: RESET_SORT }
 }
 
 export default productsReduser;
