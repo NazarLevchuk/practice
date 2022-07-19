@@ -1,19 +1,13 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;900&display=swap');
-
-
-
-
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;900&display=swap");
 
 body {
-  margin: 0;
+	margin: 0;
 }
 
 * {
 	padding: 0px;
 	margin: 0px;
 	border: 0px;
-	
 }
 *,
 *:before,
@@ -32,7 +26,7 @@ a:active {
 body {
 	color: black;
 	line-height: 1;
-	font-family: 'Archivo', sans-serif;
+	font-family: "Archivo", sans-serif;
 	font-size: 14px;
 	//text-rendering: optimizeLegibility;
 	-ms-text-size-adjust: 100%;
@@ -43,8 +37,9 @@ body {
 }
 input,
 button,
-textarea,form {
-	font-family: 'Archivo', sans-serif;
+textarea,
+form {
+	font-family: "Archivo", sans-serif;
 	font-size: inherit;
 }
 button {
