@@ -3,37 +3,16 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	width: 100vw;
-	height: 100vh;
-
-	z-index: 200;
-	position: absolute;
-	top: 0;
-	left: 0;
+	border: solid rgba(128, 128, 128, 0.547) 3px;
+	border-radius: 20px;
+	max-width: 700px;
+	margin: 0px auto;
+	padding: 20px 20px;
 }
 .Form {
-	border: solid rgba(128, 128, 128, 0.547) 3px;
-	padding: 20px 20px;
-	border-radius: 20px;
-	background-color: white;
 	display: flex;
 	flex-direction: column;
-	width: 50vw;
-	color: black;
-	position: absolute;
-	@media (max-width: 1200px) {
-		width: 70vw;
-		height: 90vh;
-	}
-}
-.Overlay {
-	background-color: rgba(198, 198, 198, 0.821);
-	width: 100vw;
-	height: 100vh;
-	z-index: -1;
-	position: absolute;
-	top: 0;
-	left: 0;
+	width: 100%;
 }
 .LoginPageTitle {
 	font-size: 40px;

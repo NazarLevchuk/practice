@@ -1,31 +1,30 @@
-import React from "react";
+import { connect } from "react-redux";
+import React, { useState } from "react";
+import { compose } from "redux";
 import s from "./ContentPageHeader.module.scss";
 
-export class ContentPageHeader extends React.Component {
-  name = localStorage.getItem("name");
+const ContentPageHeader = (props) => {
+	const [showHeader, setShowHeader] = useState(true)
+	const toggleHeader = () => {
+		setShowHeader(!showHeader)
+	}
+	return (
+		<>
+			{showHeader ? (
+				<div className={s.ContentPageHeader}>
+					Hello, {props.name}
+					<button onClick={toggleHeader} />
+				</div>
+			) : null}
+		</>
+	);
 
-  state = {
-    showHeader: true,
-  };
+};
 
-  toggleHeader = () => {
-    this.setState(({ showHeader }) => {
-      return {
-        showHeader: !showHeader,
-      };
-    });
-  };
-
-  render() {
-    return (
-      <>
-        {this.state.showHeader ? (
-          <div className={s.ContentPageHeader}>
-            Hello, {this.name}
-            <button onClick={this.toggleHeader} />
-          </div>
-        ) : null}
-      </>
-    );
-  }
+const mapStateToPtops = (state) => {
+	return {
+		name: state.contentPageReduser.email
+	}
 }
+export default compose(
+connect(mapStateToPtops))(ContentPageHeader)

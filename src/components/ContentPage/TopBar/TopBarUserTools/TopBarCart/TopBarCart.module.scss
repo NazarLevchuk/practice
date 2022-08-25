@@ -13,6 +13,32 @@
 	}
 
 }
+.Succsess {
+	font-size: 30px;
+	background-color: rgba(100, 159, 17, 0.858);
+	color: white;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	padding: 10px 30px;
+	border-radius: 0px 0px 10px 10px;
+	transform: translate(-50%);
+	animation-name: move-succsess;
+	animation-duration: 4s;
+	animation-fill-mode: forwards;
+	z-index: 2000;
+}
+@keyframes move-succsess {
+	0%{
+		top: -50px;
+	}
+	50%{
+		top: 0px;
+	}
+	100%{
+		top: -50px;
+	}
+}
 .TopBarCartItems_container {
 	display: flex;
 	justify-content: flex-end;

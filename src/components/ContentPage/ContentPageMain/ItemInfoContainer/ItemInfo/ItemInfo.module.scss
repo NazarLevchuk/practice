@@ -1,0 +1,103 @@
+.ItemInfoContainer {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+	gap: 10px;
+}
+.ItemInfoImg {
+	position: relative;
+	height: 25vw;
+	& img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+	}
+}
+.ItemInfoButton {
+	display: flex;
+	justify-content: center;
+	text-transform: uppercase;
+	border-radius: 5px;
+	width: 100%;
+	height: 40px;
+	background-color: rgb(228, 157, 32);
+	font-size: 1.5rem;
+	@media (max-width: 1200px) {
+		border-radius: 0px;
+		height: 60px;
+	}
+	@media (hover: hover) {
+		&:hover {
+			background-color: rgb(189, 125, 15);
+		}
+	}
+}
+.ItemInfoDesc {
+	display: flex;
+	flex-direction: column;
+	font-size: 2rem;
+	padding: 10px 10px;
+	& :not(:last-child) {
+		margin: 0px 0px 30px 0px;
+	}
+	& .ItemInfoButton {
+		margin-top: auto;
+	}
+}
+.ItemInfoComments {
+	margin: 20px 0px 0px 0px;
+	grid-column: 1/3;
+}
+.ItemInfoComments {
+	padding: 10px 10px;
+	background-color: rgb(251, 253, 253);
+	max-width: 1000px;
+}
+.ItemInfoCommentsTitle {
+	font-size: 30px;
+	font-weight: 700;
+	margin: 0px 0px 20px 0px;
+}
+.InputContainer {
+	font-size: 25px;
+	padding: 4px 7px;
+	border-radius: 10px;
+	background-color: rgb(228, 228, 228);
+	display: flex;
+	& input {
+		background-color: inherit;
+		width: 100%;
+	}
+	& button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 5px;
+		width: 200px;
+		height: 40px;
+		background-color: rgb(228, 157, 32);
+		font-size: 1.5rem;
+		&:hover {
+			background-color: rgb(189, 125, 15);
+		}
+	}
+}
+.Fetch {
+	width: 100%;
+	height: 30vh;
+	display: flex;
+	justify-content: center;
+}
+.SelectedPortion {
+	text-decoration: underline;
+}
+.paginationNumbers {
+	margin: 0px 5px;
+	cursor: pointer;
+	& span {
+		margin: 0px 5px;
+	}
+}

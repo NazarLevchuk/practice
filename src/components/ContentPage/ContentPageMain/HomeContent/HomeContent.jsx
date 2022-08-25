@@ -6,7 +6,7 @@ import { HomeContentTitle } from './HomeContentTitle/HomeContentTitle'
 import bgCoffe from '../../../../img/jpg/bg_coffe.jpg'
 
 export const HomeContent = () => {
-	
+
 	return (
 		<div className={s.HomeContent}>
 			<img className={s.bg_img} src={bgCoffe} alt="" />

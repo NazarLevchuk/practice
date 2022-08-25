@@ -23,7 +23,7 @@ export function CartItem({ dispatch, showForm }) {
   const items = cartList.map((item, id) => (
     <Item
       setButtonFormState={setButtonFormState}
-      key={item.id}
+      key={id}
       dispatch={dispatch}
       item={item}
       id={id}

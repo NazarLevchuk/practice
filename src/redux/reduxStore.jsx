@@ -1,39 +1,21 @@
-import {combineReducers, } from "redux";
+import {applyMiddleware, combineReducers, } from "redux";
 import { legacy_createStore as createStore} from 'redux'
 import loggInReducer from "./loggInReducer";
 import productsReduser from "./productsReduser";
 import topBarReducer from "./topBarReducer";
 import cartReduser from "./cartReduser";
-
+import contentPageReduser from "./contentPageReduser";
+import thunkMiddleware from 'redux-thunk'
 
 let redusers = combineReducers({
 	loggInReducer: loggInReducer,
 	productsReduser: productsReduser,
 	topBarReducer: topBarReducer,
 	cartReduser: cartReduser,
+	contentPageReduser: contentPageReduser,
 })
 
-let store = createStore(redusers);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(redusers, composeEnhancers(applyMiddleware(thunkMiddleware)));
 
-/* let isMobile = {
-	Android: function () {
-		return navigator.userAgent.match(/Android/i);
-	},
-	BlackBerry: function () {
-		return navigator.userAgent.match(/BlackBerry/i);
-	},
-	iOS: function () {
-		return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-	},
-	Opera: function () {
-		return navigator.userAgent.match(/Opera Mini/i);
-	},
-	Windows: function () {
-		return navigator.userAgent.match(/IEMobile/i);
-	},
-	any: function () {
-		return (this.Android() || this.BlackBerry() || this.iOS() || this.Opera() || this.Windows());
-	}
-}
- */
 export default store;

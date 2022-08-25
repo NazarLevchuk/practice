@@ -1,0 +1,22 @@
+.ReviewsBody {
+	margin: 0px 0px 25px 0px;
+}
+.UserName {
+	font-size: 25px;
+	margin: 0px 0px 8px 0px;
+	font-weight: 700;
+}
+.ReviewInfo {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid #000;
+	font-size: 20px;
+	& .UserReviews {
+		padding: 0px 20px 5px 0px;
+	}
+}
+.ReviewTools {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
