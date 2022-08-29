@@ -95,7 +95,9 @@
 	text-decoration: underline;
 }
 .paginationNumbers {
-	margin: 0px 5px;
+	display: flex;
+
+	margin: 10px 5px 0px 5px;
 	cursor: pointer;
 	& span {
 		margin: 0px 5px;

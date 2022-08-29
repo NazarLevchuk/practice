@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import s from './ItemInfo.module.scss'
 import { Reviews } from './Reviews/Reviews'
 import loading from '../../../../../img/gif/Loading.gif'
+import { HiArrowSmLeft, HiArrowSmRight } from 'react-icons/hi';
 
 export const ItemInfo = (props) => {
 
@@ -23,11 +24,19 @@ export const ItemInfo = (props) => {
 		}
 	};
 
-	let portionCount = Math.ceil(props.totalCount / props.reviewLimit)
+	let pagesCount = Math.ceil(props.totalCount / props.reviewLimit)
 	let pages = [];
-	for (let i = 1; i <= portionCount; i++) {
+	for (let i = 1; i <= pagesCount; i++) {
 		pages.push(i)
 	}
+
+	let portionCount = Math.ceil(pagesCount /  3)
+	const [portionNumber, setPortionNumber] = useState(1)
+	let leftPortionNumber = (portionNumber - 1) * 3 + 1
+	let rightPortionNumber = portionNumber * 3
+
+
+
 	const deleteFunction = (id, reviewId) => {
 		props.deleteReviewThunkCreator(id, reviewId)
 	}
@@ -58,10 +67,16 @@ export const ItemInfo = (props) => {
 			<div className={s.ItemInfoComments}>
 				<div className={s.ItemInfoCommentsTitle}>Our users Reviews :
 					<div className={s.paginationNumbers}>
-						{pages.map((p,id) => {
+						{portionNumber > 1 && 
+							<div><button onClick={() => { setPortionNumber(portionNumber - 1) }}><HiArrowSmLeft/></button></div>}
+						{pages
+							.filter(p => p >= leftPortionNumber && p <= rightPortionNumber)
+							.map((p, id) => {
 							return <span key={id} className={props.currentPortion === p ? s.SelectedPortion : ''}
 								onClick={() => { props.setCurrentPortion(p) }}>{p}</span>
-						})}
+							})}
+						{portionCount > portionNumber &&
+							<div><button onClick={() => { setPortionNumber(portionNumber + 1) }}><HiArrowSmRight/></button></div>}
 					</div>
 				</div>
 				{props.isFetch ? <div className={s.Fetch}><img className={s.isFetch} src={loading} alt="" /></div> :

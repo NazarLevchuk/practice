@@ -37,7 +37,7 @@ export const itemsAPI = {
 			.then(response => response.data);
 	},
 	getReviews(id, currentPortion, limit) {
-		return instance.get(`items/${id}/usersReviews?page=${currentPortion || 1}&limit=${limit || 1000}`,
+		return instance.get(`items/${id}/usersReviews?page=${currentPortion || 1}&limit=${limit || 1000}&sortBy=currentTime&order=desc`,
 			{
 			})
 			.then(response => response.data);

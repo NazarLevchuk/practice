@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './AboutContent.module.scss'
 
-export const AboutContent = () => {
+const AboutContent = () => {
 	return (
 		<div className={s.aboutContent_container}>
 			<div className={s.aboutContentTitle}>
@@ -16,3 +16,4 @@ export const AboutContent = () => {
 		</div>
 	)
 }
+export default AboutContent;
