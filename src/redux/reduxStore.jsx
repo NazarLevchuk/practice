@@ -1,4 +1,4 @@
-import {applyMiddleware, combineReducers, } from "redux";
+import {applyMiddleware, combineReducers } from "redux";
 import { legacy_createStore as createStore} from 'redux'
 import loggInReducer from "./loggInReducer";
 import productsReduser from "./productsReduser";
@@ -15,7 +15,6 @@ let redusers = combineReducers({
 	contentPageReduser: contentPageReduser,
 })
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(redusers, composeEnhancers(applyMiddleware(thunkMiddleware)));
+const store = createStore(redusers, applyMiddleware(thunkMiddleware));
 
 export default store;
