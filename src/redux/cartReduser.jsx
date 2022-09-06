@@ -20,28 +20,28 @@ const cartReduser = (state = initialState, action) => {
 	switch (action.type) {
 		case REMOVE_ITEM: {
 			
-			const arr = JSON.parse(localStorage.getItem('cart')) || []
+			const arr = JSON.parse(sessionStorage.getItem('cart')) || []
 			const temp = [...arr]
 			temp.splice(action.id.id, 1)
-			localStorage.setItem('cart', JSON.stringify(temp))
-			if(JSON.parse(localStorage.getItem('cart')).length !== 0){
+			sessionStorage.setItem('cart', JSON.stringify(temp))
+			if (JSON.parse(sessionStorage.getItem('cart')).length !== 0){
 				action.setButtonFormState(false)
 			}
 			return { ...state }
 		}
 		case INCREASE:{
 
-			const arr = JSON.parse(localStorage.getItem('cart'))
+			const arr = JSON.parse(sessionStorage.getItem('cart'))
 			const temp = [...arr]
 			temp[action.id].amount = +temp[action.id].amount + 1
-			localStorage.setItem('cart', JSON.stringify(temp))
+			sessionStorage.setItem('cart', JSON.stringify(temp))
 			return{...state}
 		}
 		case DECREASE: {
-			const arr = JSON.parse(localStorage.getItem('cart'))
+			const arr = JSON.parse(sessionStorage.getItem('cart'))
 			const temp = [...arr]
 			temp[action.id].amount = +temp[action.id].amount <= 1 ? temp[action.id].amount : temp[action.id].amount - 1
-			localStorage.setItem('cart', JSON.stringify(temp))
+			sessionStorage.setItem('cart', JSON.stringify(temp))
 			return{...state}
 		}
 		case UPDATE_INPUT_FORM_TEXT: {

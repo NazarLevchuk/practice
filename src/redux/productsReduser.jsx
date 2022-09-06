@@ -30,9 +30,9 @@ const productsReduser = (state = initialState, action) => {
 				price: (state.productsDataFiltered || state.productsData)[action.id.id].price,
 				amount: 1,
 			}
-			const arr = JSON.parse(localStorage.getItem('cart')) || [];
+			const arr = JSON.parse(sessionStorage.getItem('cart')) || [];
 			arr.push(newArr);
-			localStorage.setItem('cart', JSON.stringify(arr))
+			sessionStorage.setItem('cart', JSON.stringify(arr))
 		}
 			return state;
 		case ITEMS_SORTING_TEXT: {
@@ -140,7 +140,6 @@ export const getItemThunkCreator = (id) => {
 	}
 }
 export const getReviewThunkCreator = (id, currentPortion) => {
-	console.log(1)
 	return function (dispatch) {
 		let limit = 5
 		itemsAPI.getReviews(id).then(response => {
@@ -165,14 +164,15 @@ export const postReviewThunkCreator = (id, name, value, date, currentPortion) =>
 		)
 	}
 }
-export const deleteReviewThunkCreator = (id, reviewId) => {
+export const deleteReviewThunkCreator = (id, reviewId, currentPortion) => {
 	return function (dispatch) {
+		let limit = 5
 		dispatch(isFetchActionCreator(true))
 		itemsAPI.deleteReviews(id, reviewId).then(response => {
-			itemsAPI.getReviews(id).then(response => {
+			itemsAPI.getReviews(id, currentPortion, limit).then(response => {
+				dispatch(isFetchActionCreator(false))
 				dispatch(setReviewActionCreator(response))
 			})
-			dispatch(isFetchActionCreator(false))
 		}
 		)
 	}

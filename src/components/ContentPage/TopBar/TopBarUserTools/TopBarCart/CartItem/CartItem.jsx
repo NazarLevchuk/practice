@@ -6,14 +6,14 @@ import { Item } from './Item/Item';
 export function CartItem({ dispatch, showForm }) {
   const [buttonFormState, setButtonFormState] = useState(true);
 
-  const cartList = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartList = JSON.parse(sessionStorage.getItem('cart')) || [];
 
   const result = cartList.reduce((sum, current) => {
     return +sum + +current.price * current.amount;
   }, 0);
 
   useEffect(() => {
-    if ((JSON.parse(localStorage.getItem('cart')) || []).length !== 0) {
+		if ((JSON.parse(sessionStorage.getItem('cart')) || []).length !== 0) {
       setButtonFormState(false);
     } else {
       setButtonFormState(true);

@@ -11,7 +11,7 @@ export const SignIn = (props) => {
 
 	return (
 		<div className={s.LoginPageBody}>
-			<div className={s.LoginPageTitle}>SignIn</div>
+			<div className={s.LoginPageTitle}><span onClick={() => props.setHaweAnAccount(false)} className={s.RedirectOnSignIn}>To registration</span> / SignIn</div>
 			<Formik
 				initialValues={{
 					email: '',
@@ -19,12 +19,11 @@ export const SignIn = (props) => {
 				}}
 				validateOnBlur
 				onSubmit={(values) => {
-					localStorage.setItem('login', true)
-					props.setIsLoggedIn(true)
 					let email = values.email
 					let password = values.password
 					props.setCurrentUserDataThunkCreator(email, password)
-
+					sessionStorage.setItem('login', true)
+					props.setIsLoggedIn(true)
 				}}
 			validationSchema={validationsSchema}
 			>

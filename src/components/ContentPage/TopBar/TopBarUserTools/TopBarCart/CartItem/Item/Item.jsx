@@ -10,7 +10,7 @@ import { Counter } from './Counter/Counter';
 
 export function Item({ setButtonFormState, item, id, dispatch }) {
   const mapStateToProps = () => ({
-    value: JSON.parse(localStorage.getItem('cart'))[id].amount,
+    value: JSON.parse(sessionStorage.getItem('cart'))[id].amount,
   });
 
   const mapDispatchToProps = (dispatch) => ({

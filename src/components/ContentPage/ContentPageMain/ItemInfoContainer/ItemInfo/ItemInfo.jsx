@@ -7,6 +7,7 @@ import { HiArrowSmLeft, HiArrowSmRight } from 'react-icons/hi';
 export const ItemInfo = (props) => {
 
 	const [value, setValue] = useState('')
+	const [isConfirm, setIsConfirm] = useState(false)
 
 	const sandReview = () => {
 		let mounth = new Date().getMonth()
@@ -35,10 +36,13 @@ export const ItemInfo = (props) => {
 	let leftPortionNumber = (portionNumber - 1) * 3 + 1
 	let rightPortionNumber = portionNumber * 3
 
-
+	const addFunction = () => {
+		props.addItemActionCreator(props.filteredItemId)
+		setIsConfirm(false)
+	}
 
 	const deleteFunction = (id, reviewId) => {
-		props.deleteReviewThunkCreator(id, reviewId)
+		props.deleteReviewThunkCreator(id, reviewId, portionNumber)
 	}
 
 	const ReviewsData = props.review.map((newReview, id) => <Reviews
@@ -53,6 +57,15 @@ export const ItemInfo = (props) => {
 
 	return (<>
 		<div className={s.ItemInfoContainer}>
+			{isConfirm ?
+				<div className={s.confirmShoping}>
+					<div className={s.ConfirmBody}>
+						<div className={s.ButtonContainer}><button className={s.ItemsBodyButton} onClick={() => setIsConfirm(false)}></button></div>
+						<h2 className={s.ConfirmTitle}>Confirm shopping?</h2>
+						<div className={s.ConfirmButton} onClick={addFunction}><button>Confirm!</button></div>
+					</div>
+
+				</div> : null}
 			<div className={s.ItemInfoImg} >
 				<img src={props.img} alt="" />
 			</div>
@@ -60,7 +73,7 @@ export const ItemInfo = (props) => {
 				<div className={s.Desc} >{props.descriprion}</div>
 				<div className={s.Price} >{props.price} $</div>
 				<div className={s.Company} >{props.company}</div>
-				<div onClick={() => props.addItemActionCreator(props.filteredItemId)} className={s.ItemInfoButton} >
+				<div onClick={() => setIsConfirm(true)} className={s.ItemInfoButton} >
 					<button type='button'>Buy!</button>
 				</div>
 			</div>

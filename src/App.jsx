@@ -7,15 +7,15 @@ import LogInPageContainer from './components/LogInPage/LogInPageContainer';
 import SignInPageContainer from './components/SignIn/SignInContainer';
 
 
-const  App = (props) => {
-	const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('login'));
+const App = (props) => {
+	const [isLoggedIn, setIsLoggedIn] = useState(JSON.parse(sessionStorage.getItem("login")));
 	const [haweAnAccount, setHaweAnAccount] = useState(false)
 	return (
 		<div className={s.wrapper_App}>
 			{isLoggedIn ? (
 				<ContentPage {...props} setIsLoggedIn={setIsLoggedIn} store={props.store} />
 			) :
-				haweAnAccount ? <SignInPageContainer setIsLoggedIn={setIsLoggedIn} /> : <LogInPageContainer setHaweAnAccount={setHaweAnAccount} setIsLoggedIn={setIsLoggedIn} />
+				haweAnAccount ? <SignInPageContainer setHaweAnAccount={setHaweAnAccount} setIsLoggedIn={setIsLoggedIn} /> : <LogInPageContainer setHaweAnAccount={setHaweAnAccount} setIsLoggedIn={setIsLoggedIn} />
 			}
 		</div>
 	);

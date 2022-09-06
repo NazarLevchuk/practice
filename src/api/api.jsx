@@ -52,9 +52,9 @@ export const userData = {
 			{
 				//parameters
 			})
-			
+
 			.then(response => response.data);
-		
+
 	},
 	setUserDataAPI(name, email, password) {
 		return instance.post(`userData/`,
@@ -71,6 +71,22 @@ export const userData = {
 				email,
 				password,
 			})
+			.then(response => response.data);
+	},
+	removeCurrentUserDataAPI() {
+		return instance.delete(`currentUser/1`,
+			{
+			})
+			.then(response => response.data);
+	},
+	savePhotoAPI(file) {
+		const formData = new FormData()
+		formData.append('avatar', file)
+		return instance.post(`userData`, formData, {
+			headers: {
+				'Content-Type': 'multipart/form-data'
+			}
+		})
 			.then(response => response.data);
 	},
 

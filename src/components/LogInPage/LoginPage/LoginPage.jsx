@@ -25,14 +25,13 @@ export const LoginPage = (props) => {
 				validateOnBlur
 
 				onSubmit={(values) => {
-					localStorage.setItem('login', true)
-					props.setIsLoggedIn(true)
 					let name = values.name
 					let email = values.email
 					let password = values.password
 					props.setUserDataThunkCreator(name, email, password)
 					props.setCurrentUserDataThunkCreator(email, password)
-
+					sessionStorage.setItem('login', true)
+					props.setIsLoggedIn(true)
 				}}
 
 				validationSchema={validationsSchema}

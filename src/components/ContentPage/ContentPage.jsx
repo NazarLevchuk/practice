@@ -12,7 +12,6 @@ import loader from '../../img/gif/Loading.gif'
 const ContentPage = (props) => {
 	useEffect(() => {
 		props.initializeApp()
-		console.log('[1')
 	},[])
 	if (!props.initialize) {
 		return <div className={s.Loader}><img src={loader} alt=""/></div>

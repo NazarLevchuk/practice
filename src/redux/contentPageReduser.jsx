@@ -38,7 +38,7 @@ export const initializeApp = () => (dispatch) => {
 
 	let getUser = userData.getUserDataAPI().then(response => {
 		dispatch(setUserNameActionCreator(response.email))
-
+		
 	})
 	let getItems = dispatch(isFetchActionCreator(true))
 		itemsAPI.getItemsAPI().then(response => {
